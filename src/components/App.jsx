@@ -14,6 +14,23 @@ class App extends Component {
     this.props.addReminder(this.state.text);
   }
 
+  renderReminders() {
+    const { reminders } = this.props;
+    return (
+      <ul className="list-group col-sm-4">
+      {
+        reminders.map(reminder => {
+          return (
+            <li key={reminder.id} className="list-group-item">
+              <section>{reminder.text}</section>
+            </li>
+          )
+        })
+      }
+      </ul>
+    )
+  }
+
   render() {
     return (
       <section className="app">
@@ -22,8 +39,9 @@ class App extends Component {
           <section className="form-group">
             <input className="form-control" placeholder="I have to..." onChange={event => this.setState({text: event.target.value})}/>
           </section>
-          <button type="button" className="btn btn-success" onClick={() => this.addReminder}>Add</button>
+          <button type="button" className="btn btn-success" onClick={() => this.addReminder()}>Add</button>
         </section>
+        { this.renderReminders() }
       </section>
     )
   }
