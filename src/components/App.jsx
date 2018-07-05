@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addReminder, deleteReminder } from '../actions';
+import { addReminder, deleteReminder, clearReminders } from '../actions';
 import moment from 'moment';
 
 class App extends Component {
@@ -55,6 +55,7 @@ class App extends Component {
           <button type="button" className="btn btn-success" onClick={() => this.addReminder()}>Add</button>
         </section>
         { this.renderReminders() }
+        <section className="btn btn-danger" onClick={() => this.props.clearReminders()}>Delete All</section>
       </section>
     )
   }
@@ -66,4 +67,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { addReminder, deleteReminder })(App);
+export default connect(mapStateToProps, { addReminder, deleteReminder, clearReminders })(App);
