@@ -6,7 +6,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: ''
+      text: '',
+      dueDate: ''
     }
   }
 
@@ -45,6 +46,7 @@ class App extends Component {
         <section className="form-inline">
           <section className="form-group">
             <input className="form-control" placeholder="I have to..." onChange={event => this.setState({text: event.target.value})}/>
+            <input className="form-control" type="datetime-local" onChange={event => this.setState({dueDate: event.target.value})}/>
           </section>
           <button type="button" className="btn btn-success" onClick={() => this.addReminder()}>Add</button>
         </section>
